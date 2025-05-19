@@ -1,0 +1,179 @@
+{
+	name: "generic_reader_writer",
+    clock_primary: "clk_i",
+	reset_primary: "rst_ni",
+	bus_interfaces: [{
+	    protocol: "reg_iface",
+	    direction: "device"
+    }],
+    regwidth: "32",
+	registers: [
+        # Info Registers
+        {
+            name: "control",
+            desc: "Controls the IP",
+            swaccess: "rw",
+            hwaccess: "hrw",
+            fields: [
+                {
+                    bits: "0:0",
+                    name: "r_ready",
+                    swaccess: "ro",
+                    desc: "Indicates if the IP is ready to perform reads",
+                    resval: "0"
+                },
+                {
+                    bits: "1:1",
+                    name: "w_ready",
+                    swaccess: "ro",
+                    desc: "Indicates if the IP is ready to perform writes",
+                    resval: "0"
+                },
+                {
+                    bits: "2:2",
+                    name: "r_enable",
+                    desc: "Enables the IP to perform reads",
+                    resval: "0"
+                },
+                {
+                    bits: "3:3",
+                    name: "w_enable",
+                    desc: "Enables the IP to perform writes",
+                    resval: "0"
+                },
+                {
+                    bits: "4:4",
+                    name: "r_burst",
+                    desc: "Makes the IP perform issue consecutive AR req",
+                    resval: "0"
+                },
+                {
+                    bits: "5:5",
+                    name: "w_burst",
+                    desc: "Makes the IP perform issue consecutive AW req",
+                    resval: "0"
+                },
+                {
+                    bits: "13:6",
+                    name: "r_burst_len",
+                    desc: "N amount of reqs",
+                    resval: "0"
+                },
+                {
+                    bits: "21:14",
+                    name: "w_burst_len",
+                    desc: "N amount of reqs",
+                    resval: "0"
+                },
+            ]
+        },
+        {
+            name: "ar_addrl",
+            desc: "Address to be used by read",
+            swaccess: "rw",
+            hwaccess: "hro",
+            fields: [
+                {
+                    bits: "31:0",
+                    name: "addr",
+                    desc: "Address",
+                    resval: "0"
+                }
+            ]
+        },
+        {
+            name: "ar_addrh",
+            desc: "Address to be used by read",
+            swaccess: "rw",
+            hwaccess: "hro",
+            fields: [
+                {
+                    bits: "31:0",
+                    name: "addr",
+                    desc: "Address",
+                    resval: "0"
+                }
+            ]
+        },
+        {
+            name: "ar_cfg",
+            desc: "Cfg to be used by read",
+            swaccess: "rw",
+            hwaccess: "hro",
+            fields: [
+                {
+                    bits: "7:0",
+                    name: "len",
+                    desc: "Length",
+                    resval: "0"
+                },
+                {
+                    bits: "10:8",
+                    name: "size",
+                    desc: "Size",
+                    resval: "0"
+                },
+                {
+                    bits: "14:11",
+                    name: "nsaid",
+                    desc: "NSAID",
+                    resval: "0"
+                }
+            ]
+        },
+        {
+            name: "aw_addrl",
+            desc: "Address to be used by write",
+            swaccess: "rw",
+            hwaccess: "hro",
+            fields: [
+                {
+                    bits: "31:0",
+                    name: "addr",
+                    desc: "Address",
+                    resval: "0"
+                }
+            ]
+        },
+        {
+            name: "aw_addrh",
+            desc: "Address to be used by write",
+            swaccess: "rw",
+            hwaccess: "hro",
+            fields: [
+                {
+                    bits: "31:0",
+                    name: "addr",
+                    desc: "Address",
+                    resval: "0"
+                }
+            ]
+        },
+        {
+            name: "aw_cfg",
+            desc: "Cfg to be used by write",
+            swaccess: "rw",
+            hwaccess: "hro",
+            fields: [
+                {
+                    bits: "7:0",
+                    name: "len",
+                    desc: "Length",
+                    resval: "0"
+                },
+                {
+                    bits: "10:8",
+                    name: "size",
+                    desc: "Size",
+                    resval: "0"
+                },
+                {
+                    bits: "14:11",
+                    name: "nsaid",
+                    desc: "NSAID",
+                    resval: "0"
+                }
+            ]
+        },
+    ]
+}

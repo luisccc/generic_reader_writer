@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1747676798" />
+    <testcase name="test" classname="dut" file="/home/luis/Github/generic_reader_writer/cocotb/dut.py" lineno="72" time="0.017212629318237305" sim_time_ns="610.001" ratio_time="35439.15277102292" />
+  </testsuite>
+</testsuites>

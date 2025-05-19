@@ -1,0 +1,149 @@
+// Verilated -*- C++ -*-
+// DESCRIPTION: Verilator output: Symbol table internal header
+//
+// Internal details; most calling programs do not need this header,
+// unless using verilator public meta comments.
+
+#ifndef VERILATED_VTOP__SYMS_H_
+#define VERILATED_VTOP__SYMS_H_  // guard
+
+#include "verilated.h"
+
+// INCLUDE MODEL CLASS
+
+#include "Vtop.h"
+
+// INCLUDE MODULE CLASSES
+#include "Vtop___024root.h"
+#include "Vtop_axi_pkg.h"
+#include "Vtop_ariane_axi.h"
+#include "Vtop_generic_reader_writer_reg_pkg.h"
+#include "Vtop_REG_BUS__A6_D20.h"
+
+// DPI TYPES for DPI Export callbacks (Internal use)
+
+// SYMS CLASS (contains all model state)
+class alignas(VL_CACHE_LINE_BYTES)Vtop__Syms final : public VerilatedSyms {
+  public:
+    // INTERNAL STATE
+    Vtop* const __Vm_modelp;
+    bool __Vm_activity = false;  ///< Used by trace routines to determine change occurred
+    uint32_t __Vm_baseCode = 0;  ///< Used by trace routines when tracing multiple models
+    VlDeleter __Vm_deleter;
+    bool __Vm_didInit = false;
+
+    // MODULE INSTANCE STATE
+    Vtop___024root                 TOP;
+    Vtop_ariane_axi                TOP__ariane_axi;
+    Vtop_axi_pkg                   TOP__axi_pkg;
+    Vtop_REG_BUS__A6_D20           TOP__dut__DOT__i_generic_reader_writer_top__DOT__i_generic_reader_writer_prog_if__DOT__reg_bus;
+    Vtop_generic_reader_writer_reg_pkg TOP__generic_reader_writer_reg_pkg;
+
+    // SCOPE NAMES
+    VerilatedScope __Vscope_TOP;
+    VerilatedScope __Vscope_ariane_axi;
+    VerilatedScope __Vscope_axi_pkg;
+    VerilatedScope __Vscope_dut;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_ar_handler;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_aw_handler;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_b_handler;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_apb_to_reg;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_ar_buffer_i;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_ar_buffer_i__i_axi_single_slice;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_ar_buffer_i__i_axi_single_slice__i_fifo;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_ar_buffer_i__i_axi_single_slice__i_fifo__impl;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_ar_buffer_i__i_axi_single_slice__i_fifo__impl__i_fifo_v3;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_aw_buffer_i;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_aw_buffer_i__i_axi_single_slice;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_aw_buffer_i__i_axi_single_slice__i_fifo;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_aw_buffer_i__i_axi_single_slice__i_fifo__impl;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_aw_buffer_i__i_axi_single_slice__i_fifo__impl__i_fifo_v3;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_b_buffer_i;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_b_buffer_i__i_axi_single_slice;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_b_buffer_i__i_axi_single_slice__i_fifo;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_b_buffer_i__i_axi_single_slice__i_fifo__impl;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_b_buffer_i__i_axi_single_slice__i_fifo__impl__i_fifo_v3;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_r_buffer_i;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_r_buffer_i__i_axi_single_slice;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_r_buffer_i__i_axi_single_slice__i_fifo;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_r_buffer_i__i_axi_single_slice__i_fifo__impl;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_r_buffer_i__i_axi_single_slice__i_fifo__impl__i_fifo_v3;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_w_buffer_i;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_w_buffer_i__i_axi_single_slice;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_w_buffer_i__i_axi_single_slice__i_fifo;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_w_buffer_i__i_axi_single_slice__i_fifo__impl;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__i_axi2apb_64_32_iopmp__slave_w_buffer_i__i_axi_single_slice__i_fifo__impl__i_fifo_v3;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_generic_reader_writer_prog_if__reg_bus;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_addrh;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_addrh__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_addrh__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_addrl;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_addrl__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_addrl__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_cfg_len;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_cfg_len__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_cfg_len__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_cfg_nsaid;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_cfg_nsaid__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_cfg_nsaid__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_cfg_size;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_cfg_size__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_ar_cfg_size__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_addrh;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_addrh__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_addrh__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_addrl;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_addrl__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_addrl__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_cfg_len;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_cfg_len__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_cfg_len__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_cfg_nsaid;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_cfg_nsaid__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_cfg_nsaid__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_cfg_size;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_cfg_size__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_aw_cfg_size__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_r_burst;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_r_burst__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_r_burst__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_r_burst_len;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_r_burst_len__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_r_burst_len__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_r_enable;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_r_enable__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_r_enable__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_r_ready;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_r_ready__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_r_ready__wr_en_data_arb__gen_ro;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_w_burst;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_w_burst__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_w_burst__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_w_burst_len;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_w_burst_len__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_w_burst_len__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_w_enable;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_w_enable__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_w_enable__wr_en_data_arb__gen_w;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_w_ready;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_w_ready__wr_en_data_arb;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_regmap__u_control_w_ready__wr_en_data_arb__gen_ro;
+    VerilatedScope __Vscope_dut__i_generic_reader_writer_top__i_w_handler;
+    VerilatedScope __Vscope_generic_reader_writer_reg_pkg;
+
+    // SCOPE HIERARCHY
+    VerilatedHierarchy __Vhier;
+
+    // CONSTRUCTORS
+    Vtop__Syms(VerilatedContext* contextp, const char* namep, Vtop* modelp);
+    ~Vtop__Syms();
+
+    // METHODS
+    const char* name() { return TOP.name(); }
+};
+
+#endif  // guard
