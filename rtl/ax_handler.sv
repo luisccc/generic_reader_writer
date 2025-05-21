@@ -52,6 +52,7 @@ module ax_handler #(
                 ax_data_o.addr = trans_data_q.addr;
                 ax_data_o.len  = trans_data_q.len;
                 ax_data_o.size = 3;
+                ax_data_o.nsaid = trans_data_q.nsaid;
 
                 ax_data_o.burst = axi_pkg::BURST_INCR;
             end

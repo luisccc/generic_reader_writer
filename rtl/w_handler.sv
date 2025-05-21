@@ -34,6 +34,7 @@ module w_handler #(
 
         w_valid_o = 1'b0;
         ready_o = 1'b0;
+        w_data_o = '{default:'0};
 
         case (state_q)
             // Start the transaction
@@ -53,7 +54,6 @@ module w_handler #(
                     issued_data_d = issued_data_q + 1;
                 
                 w_valid_o = 1'b1;
-                w_data_o = '{default:'0};
 
                 if (w_ready_i 
                     && issued_data_q == trans_data_q.len - 1) w_data_o.last = 1'b1;
