@@ -38,6 +38,15 @@ package generic_reader_writer_reg_pkg;
     struct packed {
       logic [7:0]  q;
     } w_burst_len;
+    struct packed {
+      logic [7:0]  q;
+    } burst_delay;
+    struct packed {
+      logic        q;
+    } r_burst_incr;
+    struct packed {
+      logic        q;
+    } w_burst_incr;
   } generic_reader_writer_reg2hw_control_reg_t;
 
   typedef struct packed {
@@ -113,6 +122,18 @@ package generic_reader_writer_reg_pkg;
       logic [7:0]  d;
       logic        de;
     } w_burst_len;
+    struct packed {
+      logic [7:0]  d;
+      logic        de;
+    } burst_delay;
+    struct packed {
+      logic        d;
+      logic        de;
+    } r_burst_incr;
+    struct packed {
+      logic        d;
+      logic        de;
+    } w_burst_incr;
   } generic_reader_writer_hw2reg_control_reg_t;
 
   // Register -> HW type

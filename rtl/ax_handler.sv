@@ -24,6 +24,7 @@ module ax_handler #(
         OPERATION
     } state_q, state_d;
 
+    logic [30:0]    counter_d, counter_q;
     trans_data_t    trans_data_q, trans_data_d;
     logic [7:0]     issued_trans_d, issued_trans_q;
 
@@ -34,6 +35,8 @@ module ax_handler #(
         ax_valid_o = 1'b0;
         ready_o = 1'b0;
 
+        counter_d = counter_q;
+
         case (state_q)
             // Start the transaction
             IDLE: begin
@@ -41,20 +44,29 @@ module ax_handler #(
 
                 trans_data_d = trans_data_i;
                 issued_trans_d = '0;
+                counter_d = trans_data_i.burst_delay;
             end
             OPERATION: begin
-                if (ax_ready_i)
-                    issued_trans_d = issued_trans_q + 1;
+                if (counter_q == 0) begin
+                    if (ax_ready_i)
+                        issued_trans_d = issued_trans_q + 1;
 
-                ax_valid_o = 1'b1;
-                ax_data_o = '{default: '0};
-                
-                ax_data_o.addr = trans_data_q.addr;
-                ax_data_o.len  = trans_data_q.len;
-                ax_data_o.size = 3;
-                ax_data_o.nsaid = trans_data_q.nsaid;
+                    ax_valid_o = 1'b1;
+                    ax_data_o = '{default: '0};
+                    
+                    if(trans_data_q.burst_incr)
+                        trans_data_d.addr = trans_data_q.addr + 64'h10000;
 
-                ax_data_o.burst = axi_pkg::BURST_INCR;
+                    ax_data_o.addr = trans_data_q.addr;
+                    ax_data_o.len  = trans_data_q.len;
+                    ax_data_o.size = 3;
+                    ax_data_o.nsaid = trans_data_q.nsaid;
+
+                    ax_data_o.burst = axi_pkg::BURST_INCR;
+
+                    counter_d = trans_data_q.burst_delay;
+                end
+                else counter_d = counter_q - 1;
             end
         endcase
     end
@@ -76,6 +88,7 @@ module ax_handler #(
     always_ff @(posedge clk_i or negedge rst_ni) begin
         if(~rst_ni) begin
             state_q     <= IDLE;
+            counter_q <= 0;
 
             trans_data_q <= '{default:0};
             issued_trans_q <= '0;
@@ -84,6 +97,7 @@ module ax_handler #(
 
             trans_data_q <= trans_data_d;
             issued_trans_q <= issued_trans_d;
+            counter_q <= counter_d;
         end
     end
 

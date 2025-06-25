@@ -40,9 +40,10 @@ module generic_reader_writer_top #(
 );
 
     typedef struct packed {
-        logic [7:0]     burst_len, len;
+        logic [7:0]     burst_len, len, burst_delay;
         logic [3:0]     nsaid;
         logic [63:0]    addr;
+        logic           burst_incr;
     } trans_data_t;
 
     `REG_BUS_TYPEDEF_ALL(cfg_reg, logic[5:0], logic[31:0], logic[3:0])
@@ -120,6 +121,8 @@ module generic_reader_writer_top #(
     assign hw2reg.control.w_ready.d = aw_ready & b_ready & w_ready;
 
     assign read_channel.burst_len = reg2hw.control.r_burst_len;
+    assign read_channel.burst_delay = reg2hw.control.burst_delay;
+    assign read_channel.burst_incr = reg2hw.control.r_burst_incr;
     assign read_channel.len       = reg2hw.ar_cfg.len;
     assign read_channel.nsaid     = reg2hw.ar_cfg.nsaid;
     assign read_channel.addr      = {reg2hw.ar_addrh, reg2hw.ar_addrl};
@@ -142,6 +145,8 @@ module generic_reader_writer_top #(
     );
 
     assign write_channel.burst_len = reg2hw.control.w_burst_len;
+    assign write_channel.burst_delay = reg2hw.control.burst_delay;
+    assign write_channel.burst_incr = reg2hw.control.w_burst_incr;
     assign write_channel.len       = reg2hw.aw_cfg.len;
     assign write_channel.nsaid     = reg2hw.aw_cfg.nsaid;
     assign write_channel.addr      = {reg2hw.aw_addrh, reg2hw.aw_addrl};

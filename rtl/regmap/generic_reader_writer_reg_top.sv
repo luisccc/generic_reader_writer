@@ -88,6 +88,17 @@ module generic_reader_writer_reg_top #(
   logic [7:0] control_w_burst_len_qs;
   logic [7:0] control_w_burst_len_wd;
   logic control_w_burst_len_we;
+  logic [7:0] control_burst_delay_qs;
+  logic [7:0] control_burst_delay_wd;
+  logic control_burst_delay_we;
+
+  logic control_r_burst_incr_qs;
+  logic control_r_burst_incr_wd;
+  logic control_r_burst_incr_we;
+  logic control_w_burst_incr_qs;
+  logic control_w_burst_incr_wd;
+  logic control_w_burst_incr_we;
+
   logic [31:0] ar_addrl_qs;
   logic [31:0] ar_addrl_wd;
   logic ar_addrl_we;
@@ -327,6 +338,80 @@ module generic_reader_writer_reg_top #(
     .qs     (control_w_burst_len_qs)
   );
 
+  //   F[burst_delay]: 29:22
+  prim_subreg #(
+    .DW      (8),
+    .SWACCESS("RW"),
+    .RESVAL  (8'h0)
+  ) u_control_burst_delay (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (control_burst_delay_we),
+    .wd     (control_burst_delay_wd),
+
+    // from internal hardware
+    .de     (hw2reg.control.burst_delay.de),
+    .d      (hw2reg.control.burst_delay.d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.control.burst_delay.q ),
+
+    // to register interface (read)
+    .qs     (control_burst_delay_qs)
+  );
+
+  //   F[r_burst_incr]: 30:30
+  prim_subreg #(
+    .DW      (1),
+    .SWACCESS("RW"),
+    .RESVAL  (1'b0)
+  ) u_r_burst_incr (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (control_r_burst_incr_we),
+    .wd     (control_r_burst_incr_wd),
+
+    // from internal hardware
+    .de     (hw2reg.control.r_burst_incr.de),
+    .d      (hw2reg.control.r_burst_incr.d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.control.r_burst_incr.q ),
+
+    // to register interface (read)
+    .qs     (control_r_burst_incr_qs)
+  );
+
+  //   F[w_burst_incr]: 31:31
+  prim_subreg #(
+    .DW      (1),
+    .SWACCESS("RW"),
+    .RESVAL  (1'b0)
+  ) u_w_burst_incr (
+    .clk_i   (clk_i    ),
+    .rst_ni  (rst_ni  ),
+
+    // from register interface
+    .we     (control_w_burst_incr_we),
+    .wd     (control_w_burst_incr_wd),
+
+    // from internal hardware
+    .de     (hw2reg.control.w_burst_incr.de),
+    .d      (hw2reg.control.w_burst_incr.d ),
+
+    // to internal hardware
+    .qe     (),
+    .q      (reg2hw.control.w_burst_incr.q ),
+
+    // to register interface (read)
+    .qs     (control_w_burst_incr_qs)
+  );
 
   // R[ar_addrl]: V(False)
 
@@ -642,6 +727,15 @@ module generic_reader_writer_reg_top #(
   assign control_w_burst_len_we = addr_hit[0] & reg_we & !reg_error;
   assign control_w_burst_len_wd = reg_wdata[21:14];
 
+  assign control_burst_delay_we = addr_hit[0] & reg_we & !reg_error;
+  assign control_burst_delay_wd = reg_wdata[29:22];
+
+  assign control_r_burst_incr_we = addr_hit[0] & reg_we & !reg_error;
+  assign control_r_burst_incr_wd = reg_wdata[30:30];
+
+  assign control_w_burst_incr_we = addr_hit[0] & reg_we & !reg_error;
+  assign control_w_burst_incr_wd = reg_wdata[31:31];
+
   assign ar_addrl_we = addr_hit[1] & reg_we & !reg_error;
   assign ar_addrl_wd = reg_wdata[31:0];
 
@@ -685,6 +779,10 @@ module generic_reader_writer_reg_top #(
         reg_rdata_next[5] = control_w_burst_qs;
         reg_rdata_next[13:6] = control_r_burst_len_qs;
         reg_rdata_next[21:14] = control_w_burst_len_qs;
+        reg_rdata_next[29:22] = control_burst_delay_qs;
+        reg_rdata_next[29:22] = control_burst_delay_qs;
+        reg_rdata_next[30:30] = control_r_burst_incr_qs;
+        reg_rdata_next[31:31] = control_w_burst_incr_qs;
       end
 
       addr_hit[1]: begin
