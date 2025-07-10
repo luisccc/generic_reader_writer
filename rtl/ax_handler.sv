@@ -48,8 +48,10 @@ module ax_handler #(
             end
             OPERATION: begin
                 if (counter_q == 0) begin
-                    if (ax_ready_i)
+                    if (ax_ready_i) begin
                         issued_trans_d = issued_trans_q + 1;
+                        counter_d = trans_data_q.burst_delay;
+                    end
 
                     ax_valid_o = 1'b1;
                     ax_data_o = '{default: '0};
@@ -63,8 +65,6 @@ module ax_handler #(
                     ax_data_o.nsaid = trans_data_q.nsaid;
 
                     ax_data_o.burst = axi_pkg::BURST_INCR;
-
-                    counter_d = trans_data_q.burst_delay;
                 end
                 else counter_d = counter_q - 1;
             end
